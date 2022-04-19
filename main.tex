@@ -3,6 +3,7 @@
 
 \RequirePackage{xcolor}
 \usepackage{listings}
+\usepackage{minted}
 
 \definecolor{NordBG}{HTML}{242933}
 
@@ -32,6 +33,14 @@
 \begin{document}
 
 \setbeamercolor{background canvas}{bg=NordBG}
+
+\begin{frame}[fragile]
+    \ttfamily
+	\begin{lstlisting}
+	#!/bin/bash
+	echo the $# parameter did not destroy pygments syntax highlighting
+	\end{lstlisting}
+\end{frame}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \begin{frame}
