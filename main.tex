@@ -1,12 +1,58 @@
 % Quick start guide
 \documentclass{beamer}
 
+\RequirePackage{xcolor}
+
+\definecolor{NordBG}{HTML}{242933}
+
+% set proper informations for pdf-file
+\hypersetup{
+	pdftitle=beamer-nord,
+	pdfauthor=mfurquim,
+	pdfsubject=presentation,
+	hidelinks, % kill ugly link boxes
+}
+
 \usetheme{Nord}
+
+\renewcommand{\familydefault}{FiraCode Mono}
+
+\title {\LaTeX{} Beamer introduction}
+\subtitle{Quick-start guide}
+\author{mateus@mfurquim.dev}
+\institute{MFurquim Dev}
+\date{\today}
+
+\logo{\includegraphics[width=0.5cm]{logo.png}}
+
+% kill navigation symbols in presentation
+\beamertemplatenavigationsymbolsempty
 
 \begin{document}
 
+\setbeamercolor{background canvas}{bg=NordBG}
 \begin{frame}
+
     This is your first presentation!
+	\newline
+    \rmfamily This is your first presentation!
+	\newline
+	\textup{Upright} \textit{Italic} \textsl{Slanted}
+	\newline
+
+
+    \sffamily This is your first presentation!
+	\newline
+	\textsf{Upright  \textit{Italic} \textsl{Slanted}}
+	\newline
+
+    \ttfamily This is your first presentation!
+	\newline
+	\texttt{Upright  \textit{Italic} \textsl{Slanted}}
+	\newline
+
+	\textsc{Small Capitals}
+
 \end{frame}
 
 \end{document}
