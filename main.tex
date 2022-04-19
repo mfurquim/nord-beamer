@@ -2,6 +2,7 @@
 \documentclass{beamer}
 
 \RequirePackage{xcolor}
+\usepackage{listings}
 
 \definecolor{NordBG}{HTML}{242933}
 
@@ -31,6 +32,13 @@
 \begin{document}
 
 \setbeamercolor{background canvas}{bg=NordBG}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\begin{frame}
+	\lstinputlisting[language=Bash]{bash_script.sh}
+\end{frame}
+
+
 \begin{frame}
 
     This is your first presentation!
