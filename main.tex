@@ -47,6 +47,21 @@
 % kill navigation symbols in presentation
 \beamertemplatenavigationsymbolsempty
 
+\setbeamertemplate{headline}
+{%
+	\vskip2pt\ \hskip2pt\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\insertpagenumber/\insertdocumentendpage\ \ \vskip2pt
+}
+\setbeamertemplate{footline}
+{%
+\begin{figure}
+	\hfill
+	\def\svgwidth{16px}
+	\input{logo.pdf_tex}
+	\hskip2pt
+\end{figure}
+	% \vskip2pt\hfill\tiny\textcolor{NordBrightestWhite}{\insertshortinstitute[center]}\ \ \vskip2pt
+}
+
 % \surroundwithmdframed{minted}
 \begin{document}
 
@@ -67,47 +82,21 @@
 % \setminted[python]{key=value}
 \usemintedstyle{nord}
 
-\newminted{python}{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,labelposition=all,label=Isso é uma label,highlightcolor=NordBrightBlack,highlightlines={1, 3-4},frame=lines,fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
-\begin{frame}[fragile=singleslide]
-	\frametitle{Python Code}
-	\framesubtitle{in Beamer}
-	The following Python code adds two numbers and display the result using \verb|print()| function:
-	% \begin{minted}[bgcolor=NordBG,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}]{python}
-	\begin{pythoncode}
-import functools
+\setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,highlightcolor=NordBrightBlack,highlightlines={1, 3-4},fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
 
-from functools import lru_cache
-
-
-@lru_cache(None)
-def func(x, y):
-    """This is a docstring
-	Attr:
-		Name (str): Nome da pessoa
-	Args:
-		Name (str): Nome da pessoa
-
-	Returns:
-		(int): Idade"""
-    if x < 0:
-        raise ValueError()
-    return x + 2.0 * y
-
-
-class A:
-    def __init__(self, x, y):
-        self.x = x  # This is a useless comment
-        self.y = y
-
-    def say_hello(self):
-        print(f"Hello, world\nx = {self.x}\ny = {self.y}")
-
-
-if __name__ == "__main__":
-    a = A(1.0, 2.0)
-    a.say_hello()
-	\end{pythoncode}
+\section{Exemplo de Seção 1}
+\subsection{Exemplo de SubSeção 1}
+\begin{frame}[fragile=singleslide,noframenumbering,squeeze]
+	% \inputminted{python}{example.py}
 \end{frame}
+
+\section{Exemplo de Seção 2}
+\subsection{Exemplo de SubSeção 2}
+\begin{frame}[fragile=singleslide,noframenumbering,plain,squeeze]
+	\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\insertpagenumber/\insertpresentationendpage
+	\inputminted{python}{example.py}
+\end{frame}
+
 
 \begin{frame}[noframenumbering,fragile=singleslide,plain]{Outline}{Frame subtitle}
 \begin{semiverbatim}

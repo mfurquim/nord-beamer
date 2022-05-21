@@ -13,6 +13,7 @@ CC_LATEX  = pdflatex
 
 all:
 	$(CC_LATEX) -shell-escape $(MAIN_FILE)
+	$(CC_LATEX) -shell-escape $(MAIN_FILE)
 	@cp -v $(PDF_FILE) $(TARGET)
 	@make clean
 
