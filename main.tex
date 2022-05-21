@@ -8,7 +8,9 @@
 \usepackage{ulem}
 \usepackage{bm}
 \usepackage{MnSymbol}
-\usepackage{mdframed}
+\usepackage{textcomp}
+% \usepackage{ucs}
+% \usepackage[utf8x]{inputenc}
 
 \definecolor{NordBG}{HTML}{242933}
 
@@ -45,6 +47,7 @@
 % kill navigation symbols in presentation
 \beamertemplatenavigationsymbolsempty
 
+% \surroundwithmdframed{minted}
 \begin{document}
 
 % \setbeamercolor{background canvas}{bg=NordBG}
@@ -62,23 +65,48 @@
 
 
 % \setminted[python]{key=value}
-\begin{frame}[fragile]
+\usemintedstyle{nord}
+
+\newminted{python}{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,labelposition=all,label=Isso é uma label,highlightcolor=NordBrightBlack,highlightlines={1, 3-4},frame=lines,fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
+\begin{frame}[fragile=singleslide]
 	\frametitle{Python Code}
 	\framesubtitle{in Beamer}
 	The following Python code adds two numbers and display the result using \verb|print()| function:
-	\rule{\textwidth}{1pt}
-	\scriptsize
 	% \begin{minted}[bgcolor=NordBG,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}]{python}
-	\begin{minted}[autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}]{python}
-		# This program adds two numbers
-		num1 = 1.5
-		num2 = 6.3
-		# Add two numbers
-		sum = num1 + num2
-		# Display the sum
-		print('The sum of {0} and {1} is {2} but then I keep on writting'.format(num1, num2, sum))
-	\end{minted}
-	\rule{\textwidth}{1pt}
+	\begin{pythoncode}
+import functools
+
+from functools import lru_cache
+
+
+@lru_cache(None)
+def func(x, y):
+    """This is a docstring
+	Attr:
+		Name (str): Nome da pessoa
+	Args:
+		Name (str): Nome da pessoa
+
+	Returns:
+		(int): Idade"""
+    if x < 0:
+        raise ValueError()
+    return x + 2.0 * y
+
+
+class A:
+    def __init__(self, x, y):
+        self.x = x  # This is a useless comment
+        self.y = y
+
+    def say_hello(self):
+        print(f"Hello, world\nx = {self.x}\ny = {self.y}")
+
+
+if __name__ == "__main__":
+    a = A(1.0, 2.0)
+    a.say_hello()
+	\end{pythoncode}
 \end{frame}
 
 \begin{frame}[noframenumbering,fragile=singleslide,plain]{Outline}{Frame subtitle}
