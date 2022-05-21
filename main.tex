@@ -4,6 +4,11 @@
 \RequirePackage{xcolor}
 \usepackage{listings}
 \usepackage{minted}
+\usepackage{tikz}
+\usepackage{ulem}
+\usepackage{bm}
+\usepackage{MnSymbol}
+\usepackage{mdframed}
 
 \definecolor{NordBG}{HTML}{242933}
 
@@ -19,27 +24,231 @@
 
 \renewcommand{\familydefault}{FiraCode Mono}
 
-\title {\LaTeX{} Beamer introduction}
+\title{\LaTeX\ Beamer introduction}
 \subtitle{Quick-start guide}
 \author{mateus@mfurquim.dev}
 \institute{MFurquim Dev}
 \date{\today}
 
-\logo{\includegraphics[width=0.5cm]{logo.png}}
+% \logo{
+% \includegraphics[width=5cm]{logo_borders.png}
+% }
+% Load TikZ
+\titlegraphic{%
+	\begin{tikzpicture}[overlay,remember picture]
+		\draw[red, thick] (-1,2) -- (2,-4);
+		\draw[blue, thick] (-1,-1) -- (2,2);
+		\filldraw[black] (0,0) circle (2pt) node[anchor=west]{Intersection point};
+	\end{tikzpicture}
+}
 
 % kill navigation symbols in presentation
 \beamertemplatenavigationsymbolsempty
 
 \begin{document}
 
-\setbeamercolor{background canvas}{bg=NordBG}
+% \setbeamercolor{background canvas}{bg=NordBG}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+% semiverbatim environment
+% Overlay print environment
+% \begin{overlayprint}<overlay specification>[{area width}]
+  % content
+  % \end{overlayprint}
+
+
+% \setminted[python]{key=value}
+\begin{frame}[fragile]
+	\frametitle{Python Code}
+	\framesubtitle{in Beamer}
+	The following Python code adds two numbers and display the result using \verb|print()| function:
+	\rule{\textwidth}{1pt}
+	\scriptsize
+	% \begin{minted}[bgcolor=NordBG,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}]{python}
+	\begin{minted}[autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}]{python}
+		# This program adds two numbers
+		num1 = 1.5
+		num2 = 6.3
+		# Add two numbers
+		sum = num1 + num2
+		# Display the sum
+		print('The sum of {0} and {1} is {2} but then I keep on writting'.format(num1, num2, sum))
+	\end{minted}
+	\rule{\textwidth}{1pt}
+\end{frame}
+
+\begin{frame}[noframenumbering,fragile=singleslide,plain]{Outline}{Frame subtitle}
+\begin{semiverbatim}
+#!/bin/bash
+echo the $# parameter did not destroy pygments syntax highlighting
+\end{semiverbatim}
+\end{frame}
+
+
+\begin{frame}{Font size in Beamer (default)}
+
+\tiny This is tiny font size
+
+\scriptsize This is scriptsize font size
+
+\footnotesize This is footnotesize font size
+
+\small This is small font size
+
+\normalsize This is normalsize font size
+
+\large This is large font size
+
+\Large This is Large font size
+
+\LARGE This is LARGE font size
+
+\huge This is huge font size
+
+\Huge This is Huge font size
+
+\end{frame}
+
+\begin{frame}{Slanted and small caps text}
+This is \textsc{small caps text} and this is
+\textsl{slanted text}.\\~\\
+You can combine them, to produce \textsl{\textsc{small
+caps slanted text}} but also \textsc{\textbf{bold small caps}} or \textsl{\underline{underlined slanted text}}.\\~\\
+
+
+\emph{This} is emphasized and \textit{\emph{this} is
+also emphasized, although in a different way.}\\~\\
+
+
+Let $\bm{u}$, $\bm{v}$ be vectors and $\bm{A}$ be a
+matrix such that $\bm{Au}=\bm{v}$.
+This is a bold integral:
+\[
+\bm{\int_{-\infty}^{\infty} e^{-x^2}\,dx=\sqrt{\pi} }
+\]
+\end{frame}
+
+\begin{frame}{Text decorations provided by the \texttt{ulem} package}
+\uline{Underlined that breaks at the end of lines if they are too too long because the author won’t stop writing.} \\~\\
+\uuline{Double-Underlined text} \\~\\
+\uwave{Wavy-Underlined text} \\~\\
+\sout{Strikethrough text} \\~\\
+\xout{Struck with Hatching text} \\~\\
+\dashuline{Dashed Underline text} \\~\\
+\dotuline{Dotted Underline text}
+\end{frame}
+
+\begin{frame}{Basic Blocks}
+	\begin{block}{Standard Block}
+		This is a standard block.
+	\end{block}
+	\begin{alertblock}{Alert Message}
+		This block presents alert message.
+	\end{alertblock}
+	\begin{exampleblock}{An example of typesetting tool}
+		Example: MS Word, \LaTeX{}
+	\end{exampleblock}
+\end{frame}
+% Frame 2
+\begin{frame}{Mathematical Environment Blocks}
+	\begin{definition}
+		This is a definition.
+	\end{definition}
+
+	\begin{theorem}
+		This is a theorem.
+	\end{theorem}
+
+	\begin{lemma}
+		This is a proof idea.
+	\end{lemma}
+\end{frame}
+% Frame 3
+\begin{frame}{Mathematical Environment Blocks-Continued}
+	\begin{proof}
+		This is a proof.
+	\end{proof}
+
+	\begin{corollary}
+		This is a corollary
+	\end{corollary}
+
+	\begin{example}
+		This is an example
+	\end{example}
+\end{frame}
+
+
+
+
+\begin{frame}{Vertical line between columns}
+
+	\begin{columns}[T]%Tcb
+		% Column 1
+		\begin{column}{0.49\textwidth}
+
+			\begin{itemize}
+				\item Input layer: 2 neurons.
+				\item Hidden layer: 5 neurons.
+				\item Output layer: 2 neurons.
+			\end{itemize}
+
+		\end{column}
+		% Column 2 (vertical line)
+		\begin{column}{.02\textwidth}
+			\rule{.1mm}{0.7\textheight}
+		\end{column}
+		% Column 3
+		\begin{column}{0.49\textwidth}
+			\includegraphics[width=\textwidth]{logo_borders.png}
+		\end{column}
+
+	\end{columns}
+\end{frame}
+
+\begin{frame}[plain,squeeze]{Defined Colors}{This is a subtitle}
+	\begin{description}[Snow Storm]
+		\item[Polar Night]
+			\textcolor{NordDarkBlack}{NordDarkBlack} \quad \textcolor{NordBlack}{NordBlack}\\
+			\textcolor{NordMediumBlack}{NordMediumBlack} \quad \textcolor{NordBrightBlack}{NordBrightBlack}
+		\item[Snow Storm]
+			\textcolor{NordWhite}{NordWhite} \quad \textcolor{NordBrighterWhite}{NordBrightestWhite}\\
+			\textcolor{NordBrightestWhite}{NordBrightestWhite}
+		\item[Frost]
+			\textcolor{NordCyan}{NordCyan} \quad \textcolor{NordBrightCyan}{NordBrightCyan}\\
+			\textcolor{NordBlue}{NordBlue} \quad \textcolor{NordBrightBlue}{NordBrightBlue}
+		\item[Aurora]
+			\textcolor{NordRed}{NordRed} \quad \textcolor{NordOrange}{NordOrange} \\
+			\textcolor{NordYellow}{NordYellow} \quad \textcolor{NordGreen}{NordGreen} \\
+			\textcolor{NordMagenta}{NordMagenta}
+	\end{description}
+\end{frame}
+
+\begin{frame}
+\begin{tikzpicture}
+\draw[NordRed, thick] (-1,2) -- (2,-4);
+\draw[NordBrightBlue, thick] (-1,-1) -- (2,2);
+\filldraw[black] (0,0) circle (2pt) node[anchor=west]{
+		\includegraphics[width=0.5cm]{logo_borders.png}
+};
+\end{tikzpicture}
+	% \begin{tikzpicture}[overlay,remember picture]
+	% \node[right=0.2cm] at (current page.150) {%
+	% 	\includegraphics[width=0.5cm]{logo_borders.png}
+	% };
+	% \end{tikzpicture}
+\end{frame}
 
 \begin{frame}[fragile]
-    \ttfamily
-	\begin{lstlisting}
-	#!/bin/bash
-	echo the $# parameter did not destroy pygments syntax highlighting
-	\end{lstlisting}
+\tiny\ttfamily
+\begin{lstlisting}
+#!/bin/bash
+echo the $# parameter did not destroy pygments syntax highlighting
+\end{lstlisting}
 \end{frame}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
@@ -71,5 +280,10 @@
 	\textsc{Small Capitals}
 
 \end{frame}
+
+% \begin{overlayarea}<overlay spec>{area width}{area height}
+\begin{overlayarea}{1080px}{1080px}
+  content
+\end{overlayarea}
 
 \end{document}
