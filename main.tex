@@ -4,10 +4,12 @@
 \RequirePackage{xcolor}
 \usepackage{listings}
 \usepackage{minted}
-\usepackage{tikz}
 \usepackage{ulem}
 \usepackage{bm}
 \usepackage{textcomp}
+
+\usepackage{tikz}
+\usetikzlibrary{snakes}
 
 \definecolor{NordBG}{HTML}{242933}
 
@@ -59,6 +61,7 @@
 
 
 \begin{document}
+\fontsize{4pt}{1}\selectfont
 
 % \setbeamercolor{background canvas}{bg=NordBG}
 
@@ -70,9 +73,9 @@
 \subsection{Exemplo de SubSeção 1}
 \begin{frame}[fragile=singleslide,noframenumbering,squeeze]
 	\inputminted{python}{example.py}
-	\vspace*{-14px}
-	\begin{tikzpicture}[overlay,remember picture]
-		\draw[help lines, NordBG] (0,0) grid (11,9);
+	\vspace*{-3px}
+	\begin{tikzpicture}[overlay,remember picture,set style={{help lines}+=[very thin,NordBG]}]
+		\draw[help lines] (0,0) grid (11,9);
 		\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
 		\draw[very thick, NordWhite] (0,0) to [out=90,in=195] (2,1.5);
 		\draw [<->,thick, NordCyan] (0,0) to [out=90,in=180] (1,1)
@@ -80,16 +83,44 @@
 		\draw[NordRed, thick] (0,9) -- (11,0);
 		\draw[NordBrightBlue, thick] (0,0) -- (11,9);
 		\filldraw[NordBG] (5.5,4.5) circle (1pt);
-		\node [above] at (5.5,4.5) {\tiny{above}};
-		\node [below] at (5.5,4.5) {\tiny{below}};
-		\node [left] at (5.5,4.5) {\tiny{left}};
-		\node [right] at (5.5,4.5) {\tiny{right}};
+		\node [above] at (5.5,4.5) {above};
+		\node [below] at (5.5,4.5) {below};
+		\node [left] at (5.5,4.5) {left};
+		\node [right] at (5.5,4.5) {right};
 
 		\filldraw[NordBG] (5.5,7.5) circle (1pt);
-		\node [below right] at (5.5,7.5) {\tiny{below right}};
-		\node [below left] at (5.5,7.5) {\tiny{below left}};
-		\node [above right] at (5.5,7.5) {\tiny{above right}};
-		\node [above left] at (5.5,7.5) {\tiny{above left}};
+		\node [below right] at (5.5,7.5) {below right};
+		\node [below left] at (5.5,7.5) {below left};
+		\node [above right] at (5.5,7.5) {above right};
+		\node [above left] at (5.5,7.5) {above left};
+
+		\draw [thick]
+		(5,9) -- (11,9);
+		\draw (5,8.8) -- (5, 9.2);
+		\draw (7,8.8) -- (7, 9.2);
+		\draw (9,8.8) -- (9, 9.2);
+		\draw (11,8.8) -- (11, 9.2);
+		\begin{scope}[NordBlack]
+			\node[align=left, below,fill=NordWhite,rounded corners] at (6,8.9)%
+			{This happens\\in period 1\\and is aligned\\ left};
+			\node[align=center, below,fill=NordWhite,rounded corners] at (8,8.9)%
+			{This happens\\in period 2\\and is centered};
+			\node[align=right, below,fill=NordWhite,rounded corners] at (10,8.9)%
+			{This happens\\in period 3\\and is right aligned};
+		\end{scope}
+
+		\draw[x=10ex,y=10ex] (6.5,6.5) sin (8,7.5);
+
+		\draw[snake=brace,thick] (0,3.73) -- (0.55,3.73);
+		\node[align=left,above right,NordBlack,fill=NordWhite,rounded corners] at (0.32,3.93)%
+		{Essa palavra chave indica a definição de uma classe};
+
+		\draw[->,thick] (0.61,2.53) to [out=80,in=180] (0.87,2.6);
+		\node[align=left,right,NordBlack,fill=NordWhite,rounded corners] at (0.87,2.66)%
+		{Essa palavra chave indica a definição de uma função};
+
+		% \filldraw[NordWhite] (0.61,2.53) circle (1pt);
+		% \filldraw[NordWhite] (0.91,2.6) circle (1pt);
 	\end{tikzpicture}
 
 
@@ -97,6 +128,8 @@
 
 
 \begin{frame}{Font size in Beamer (default)}
+
+This is default font size
 
 \tiny This is tiny font size
 
