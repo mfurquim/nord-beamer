@@ -11,6 +11,7 @@
 \usepackage{tikz}
 \usetikzlibrary{snakes}
 \usetikzlibrary{decorations.pathmorphing}
+\RequirePackage{tikz-penciline}
 
 
 \definecolor{NordBG}{HTML}{242933}
@@ -80,7 +81,8 @@
 			overlay,%
 			remember picture,%
 			set style={{help lines}+=[very thin,NordBG]},%
-			pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}}%
+			pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}},%
+			penciline={jag ratio=0.1}
 	]
 		\draw[help lines] (0,0) grid (11,9);
 		\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
@@ -123,7 +125,7 @@
 		{Essa palavra chave indica a definição de uma classe};
 
 		\draw[->,pencildraw,thick,very nearly opaque] (0.61,2.53) to [out=80,in=180] (0.87,2.65);
-		\node[align=left,right,NordBlack,fill=NordWhite,rounded corners,inner sep=0.75ex] at (0.87,2.65)%
+		\node[align=left,right,NordBlack,fill=NordWhite,rounded corners,decorate,inner sep=0.75ex] at (0.87,2.65)%
 		{Essa palavra chave indica a definição de uma função};
 
 		% \filldraw[NordWhite] (0.61,2.53) circle (1pt);
@@ -146,16 +148,17 @@
 		\node[pencildraw,draw] {Node};
 		\draw[pencildraw] (0,1) -- (1,1) arc (0:-180:9mm and 7mm);
 	\end{tikzpicture}
-% \begin{tikzpicture}[penciline={jag ratio=1}]
-% \draw[penciline={jag ratio=5},->](-5,0) -- (5,0);
-% \draw[penciline={jag ratio=5},->](0,-5) -- (0,5);
 
-% \draw[decorate,fill=blue!15,fill opacity=.25]  (-3,-3) rectangle (3,3);
-% \draw[penciline={jag ratio=0},fill=green!15,fill opacity=.25] circle [radius=3cm];
-% \draw[decorate,red,shift={(1,1)},rotate=45,fill=red!25,fill opacity=.5] %
-%           (1,1) -- (1,-1) -- (-1,-1) -- (-1,1) -- (1,1);
-% 		  \draw[penciline={jag ratio=0.1},color=blue]   plot (\x,{sin(\x r)}) node [decorate,draw] {$\sin(x)$} ;
-% 		  \end{tikzpicture}
+	\begin{tikzpicture}[penciline={jag ratio=1}]
+		\draw[penciline={jag ratio=5},->](-5,0) -- (5,0);
+		\draw[penciline={jag ratio=5},->](0,-5) -- (0,5);
+
+		\draw[decorate,fill=blue!15,fill opacity=.25]  (-3,-3) rectangle (3,3);
+		\draw[penciline={jag ratio=0},fill=green!15,fill opacity=.25] circle [radius=3cm];
+		\draw[decorate,red,shift={(1,1)},rotate=45,fill=red!25,fill opacity=.5] %
+		(1,1) -- (1,-1) -- (-1,-1) -- (-1,1) -- (1,1);
+		\draw[penciline={jag ratio=0.01},color=blue]   plot (\x,{sin(\x r)}) node [decorate,draw] {$\sin(x)$} ;
+	\end{tikzpicture}
 This is default font size
 
 \tiny This is tiny font size
