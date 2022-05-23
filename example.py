@@ -1,4 +1,4 @@
-# Max size of code is 36 lines per 96 characters
+# Max size of code is 36 lines per 67 characters
 import functools
 
 from functools import lru_cache
@@ -33,4 +33,4 @@ if __name__ == "__main__":
     a.say_hello()
 
 
-123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456
+123456789 123456789 123456789 123456789 123456789 123456789 1234567

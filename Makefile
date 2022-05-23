@@ -1,12 +1,13 @@
 .PHONY: all clean
 
-TARGET    = code_example.pdf
+TARGET    = code_example.png
 
 MAIN_FILE = main.tex
 DVI_FILE  = $(addsuffix .dvi, $(basename $(MAIN_FILE)))
 AUX_FILE  = $(addsuffix .aux, $(basename $(MAIN_FILE)))
 PS_FILE   = $(addsuffix .ps,  $(basename $(MAIN_FILE)))
 PDF_FILE  = $(addsuffix .pdf, $(basename $(MAIN_FILE)))
+PNG_FILE  = $(addsuffix .png, $(basename $(MAIN_FILE)))
 
 CC_LATEX  = pdflatex
 #CC_LATEX  = xelatex
@@ -14,7 +15,8 @@ CC_LATEX  = pdflatex
 all:
 	$(CC_LATEX) -shell-escape $(MAIN_FILE)
 	$(CC_LATEX) -shell-escape $(MAIN_FILE)
-	@cp -v $(PDF_FILE) $(TARGET)
+	@convert -density 285.7 $(PDF_FILE) $(PNG_FILE)
+	@cp -v $(PNG_FILE) $(TARGET)
 	@make clean
 
 clean:

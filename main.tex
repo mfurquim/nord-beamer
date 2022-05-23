@@ -1,5 +1,7 @@
 % Quick start guide
-\documentclass{beamer}
+\documentclass[aspectratio=11]{beamer}
+% \usepackage[paperwidth=11.25n, paperheight=11.25in]{geometry}
+% \geometry{total={11.25in,11.25in}}
 
 \RequirePackage{xcolor}
 \usepackage{listings}
@@ -12,6 +14,7 @@
 \usetikzlibrary{snakes}
 \usetikzlibrary{decorations.pathmorphing}
 \RequirePackage{tikz-penciline}
+
 
 
 \definecolor{NordBG}{HTML}{242933}
@@ -84,37 +87,37 @@
 			pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}},%
 			penciline={jag ratio=0.1}
 	]
-		\draw[help lines] (0,0) grid (11,9);
+		\draw[help lines] (0,0) grid (8,9);
 		\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
 		\draw[very thick, NordWhite] (0,0) to [out=90,in=195] (2,1.5);
 		\draw [<->,thick, NordCyan] (0,0) to [out=90,in=180] (1,1)
 		to [out=0,in=180] (2.5,0) to [out=0,in=-135] (4,1) ;
-		\draw[NordRed, thick] (0,9) -- (11,0);
-		\draw[NordBrightBlue, thick] (0,0) -- (11,9);
-		\filldraw[NordBG] (5.5,4.5) circle (1pt);
-		\node [above] at (5.5,4.5) {above};
-		\node [below] at (5.5,4.5) {below};
-		\node [left] at (5.5,4.5) {left};
-		\node [right] at (5.5,4.5) {right};
+		\draw[NordRed, thick] (0,9) -- (8,0);
+		\draw[NordBrightBlue, thick] (0,0) -- (8,9);
+		\filldraw[NordBG] (4,4.5) circle (1pt);
+		\node [above] at (4,4.5) {above};
+		\node [below] at (4,4.5) {below};
+		\node [left] at (4,4.5) {left};
+		\node [right] at (4,4.5) {right};
 
-		\filldraw[NordBG] (5.5,7.5) circle (1pt);
-		\node [below right] at (5.5,7.5) {below right};
-		\node [below left] at (5.5,7.5) {below left};
-		\node [above right] at (5.5,7.5) {above right};
-		\node [above left] at (5.5,7.5) {above left};
+		\filldraw[NordBG] (4,7.5) circle (1pt);
+		\node [below right] at (4,7.5) {below right};
+		\node [below left] at (4,7.5) {below left};
+		\node [above right] at (4,7.5) {above right};
+		\node [above left] at (4,7.5) {above left};
 
 		\draw [thick]
-		(5,9) -- (11,9);
-		\draw (5,8.8) -- (5, 9.2);
-		\draw (7,8.8) -- (7, 9.2);
-		\draw (9,8.8) -- (9, 9.2);
-		\draw (11,8.8) -- (11, 9.2);
+		(2,9) -- (8,9);
+		\draw (2,8.8) -- (2, 9.2);
+		\draw (4,8.8) -- (4, 9.2);
+		\draw (6,8.8) -- (6, 9.2);
+		\draw (8,8.8) -- (8, 9.2);
 		\begin{scope}[NordBlack]
-			\node[align=left, below,fill=NordWhite,rounded corners] at (6,8.9)%
+			\node[align=left, below,fill=NordWhite,rounded corners] at (3,8.9)%
 			{This happens\\in period 1\\and is aligned\\ left};
-			\node[align=center, below,fill=NordWhite,rounded corners] at (8,8.9)%
+			\node[align=center, below,fill=NordWhite,rounded corners] at (5,8.9)%
 			{This happens\\in period 2\\and is centered};
-			\node[align=right, below,fill=NordWhite,rounded corners] at (10,8.9)%
+			\node[align=right, below,fill=NordWhite,rounded corners] at (7,8.9)%
 			{This happens\\in period 3\\and is right aligned};
 		\end{scope}
 
@@ -137,224 +140,224 @@
 \end{frame}
 
 
-\begin{frame}{Font size in Beamer (default)}
+% \begin{frame}{Font size in Beamer (default)}
 
-	\begin{tikzpicture}[
-	pencildraw/.style={
-			white!75,
-			decorate,
-			decoration={random steps,segment length=0.8pt,amplitude=0.15pt}
-		}
-		]
-		\node[pencildraw,draw] {Node};
-		\draw[pencildraw] (0,1) -- (1,1) arc (0:-180:9mm and 7mm);
-	\end{tikzpicture}
+% 	\begin{tikzpicture}[
+% 	pencildraw/.style={
+% 			white!75,
+% 			decorate,
+% 			decoration={random steps,segment length=0.8pt,amplitude=0.15pt}
+% 		}
+% 		]
+% 		\node[pencildraw,draw] {Node};
+% 		\draw[pencildraw] (0,1) -- (1,1) arc (0:-180:9mm and 7mm);
+% 	\end{tikzpicture}
 
-	\begin{tikzpicture}[penciline={jag ratio=1}]
-		\draw[penciline={jag ratio=5},->](-5,0) -- (5,0);
-		\draw[penciline={jag ratio=5},->](0,-5) -- (0,5);
+% 	\begin{tikzpicture}[penciline={jag ratio=1}]
+% 		\draw[penciline={jag ratio=5},->](-5,0) -- (5,0);
+% 		\draw[penciline={jag ratio=5},->](0,-5) -- (0,5);
 
-		\draw[decorate,fill=blue!15,fill opacity=.25]  (-3,-3) rectangle (3,3);
-		\draw[penciline={jag ratio=0},fill=green!15,fill opacity=.25] circle [radius=3cm];
-		\draw[decorate,red,shift={(1,1)},rotate=45,fill=red!25,fill opacity=.5] %
-		(1,1) -- (1,-1) -- (-1,-1) -- (-1,1) -- (1,1);
-		\draw[penciline={jag ratio=0.01},color=blue]   plot (\x,{sin(\x r)}) node [decorate,draw] {$\sin(x)$} ;
-	\end{tikzpicture}
-This is default font size
+% 		\draw[decorate,fill=blue!15,fill opacity=.25]  (-3,-3) rectangle (3,3);
+% 		\draw[penciline={jag ratio=0},fill=green!15,fill opacity=.25] circle [radius=3cm];
+% 		\draw[decorate,red,shift={(1,1)},rotate=45,fill=red!25,fill opacity=.5] %
+% 		(1,1) -- (1,-1) -- (-1,-1) -- (-1,1) -- (1,1);
+% 		\draw[penciline={jag ratio=0.01},color=blue]   plot (\x,{sin(\x r)}) node [decorate,draw] {$\sin(x)$} ;
+% 	\end{tikzpicture}
+% This is default font size
 
-\tiny This is tiny font size
+% \tiny This is tiny font size
 
-\scriptsize This is scriptsize font size
+% \scriptsize This is scriptsize font size
 
-\footnotesize This is footnotesize font size
+% \footnotesize This is footnotesize font size
 
-\small This is small font size
+% \small This is small font size
 
-\normalsize This is normalsize font size
+% \normalsize This is normalsize font size
 
-\large This is large font size
+% \large This is large font size
 
-\Large This is Large font size
+% \Large This is Large font size
 
-\LARGE This is LARGE font size
+% \LARGE This is LARGE font size
 
-\huge This is huge font size
+% \huge This is huge font size
 
-\Huge This is Huge font size
+% \Huge This is Huge font size
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}{Slanted and small caps text}
-This is \textsc{small caps text} and this is
-\textsl{slanted text}.\\~\\
-You can combine them, to produce \textsl{\textsc{small
-caps slanted text}} but also \textsc{\textbf{bold small caps}} or \textsl{\underline{underlined slanted text}}.\\~\\
-
-
-\emph{This} is emphasized and \textit{\emph{this} is
-also emphasized, although in a different way.}\\~\\
+% \begin{frame}{Slanted and small caps text}
+% This is \textsc{small caps text} and this is
+% \textsl{slanted text}.\\~\\
+% You can combine them, to produce \textsl{\textsc{small
+% caps slanted text}} but also \textsc{\textbf{bold small caps}} or \textsl{\underline{underlined slanted text}}.\\~\\
 
 
-Let $\bm{u}$, $\bm{v}$ be vectors and $\bm{A}$ be a
-matrix such that $\bm{Au}=\bm{v}$.
-This is a bold integral:
-\[
-\bm{\int_{-\infty}^{\infty} e^{-x^2}\,dx=\sqrt{\pi} }
-\]
-\end{frame}
-
-\begin{frame}{Text decorations provided by the \texttt{ulem} package}
-\uline{Underlined that breaks at the end of lines if they are too too long because the author won’t stop writing.} \\~\\
-\uuline{Double-Underlined text} \\~\\
-\uwave{Wavy-Underlined text} \\~\\
-\sout{Strikethrough text} \\~\\
-\xout{Struck with Hatching text} \\~\\
-\dashuline{Dashed Underline text} \\~\\
-\dotuline{Dotted Underline text}
-\end{frame}
-
-\begin{frame}{Basic Blocks}
-	\begin{block}{Standard Block}
-		This is a standard block.
-	\end{block}
-	\begin{alertblock}{Alert Message}
-		This block presents alert message.
-	\end{alertblock}
-	\begin{exampleblock}{An example of typesetting tool}
-		Example: MS Word, \LaTeX{}
-	\end{exampleblock}
-\end{frame}
-% Frame 2
-\begin{frame}{Mathematical Environment Blocks}
-	\begin{definition}
-		This is a definition.
-	\end{definition}
-
-	\begin{theorem}
-		This is a theorem.
-	\end{theorem}
-
-	\begin{lemma}
-		This is a proof idea.
-	\end{lemma}
-\end{frame}
-% Frame 3
-\begin{frame}{Mathematical Environment Blocks-Continued}
-	\begin{proof}
-		This is a proof.
-	\end{proof}
-
-	\begin{corollary}
-		This is a corollary
-	\end{corollary}
-
-	\begin{example}
-		This is an example
-	\end{example}
-\end{frame}
+% \emph{This} is emphasized and \textit{\emph{this} is
+% also emphasized, although in a different way.}\\~\\
 
 
+% Let $\bm{u}$, $\bm{v}$ be vectors and $\bm{A}$ be a
+% matrix such that $\bm{Au}=\bm{v}$.
+% This is a bold integral:
+% \[
+% \bm{\int_{-\infty}^{\infty} e^{-x^2}\,dx=\sqrt{\pi} }
+% \]
+% \end{frame}
+
+% \begin{frame}{Text decorations provided by the \texttt{ulem} package}
+% \uline{Underlined that breaks at the end of lines if they are too too long because the author won’t stop writing.} \\~\\
+% \uuline{Double-Underlined text} \\~\\
+% \uwave{Wavy-Underlined text} \\~\\
+% \sout{Strikethrough text} \\~\\
+% \xout{Struck with Hatching text} \\~\\
+% \dashuline{Dashed Underline text} \\~\\
+% \dotuline{Dotted Underline text}
+% \end{frame}
+
+% \begin{frame}{Basic Blocks}
+% 	\begin{block}{Standard Block}
+% 		This is a standard block.
+% 	\end{block}
+% 	\begin{alertblock}{Alert Message}
+% 		This block presents alert message.
+% 	\end{alertblock}
+% 	\begin{exampleblock}{An example of typesetting tool}
+% 		Example: MS Word, \LaTeX{}
+% 	\end{exampleblock}
+% \end{frame}
+% % Frame 2
+% \begin{frame}{Mathematical Environment Blocks}
+% 	\begin{definition}
+% 		This is a definition.
+% 	\end{definition}
+
+% 	\begin{theorem}
+% 		This is a theorem.
+% 	\end{theorem}
+
+% 	\begin{lemma}
+% 		This is a proof idea.
+% 	\end{lemma}
+% \end{frame}
+% % Frame 3
+% \begin{frame}{Mathematical Environment Blocks-Continued}
+% 	\begin{proof}
+% 		This is a proof.
+% 	\end{proof}
+
+% 	\begin{corollary}
+% 		This is a corollary
+% 	\end{corollary}
+
+% 	\begin{example}
+% 		This is an example
+% 	\end{example}
+% \end{frame}
 
 
-\begin{frame}{Vertical line between columns}
-
-	\begin{columns}[T]%Tcb
-		% Column 1
-		\begin{column}{0.49\textwidth}
-
-			\begin{itemize}
-				\item Input layer: 2 neurons.
-				\item Hidden layer: 5 neurons.
-				\item Output layer: 2 neurons.
-			\end{itemize}
-
-		\end{column}
-		% Column 2 (vertical line)
-		\begin{column}{.02\textwidth}
-			\rule{.1mm}{0.7\textheight}
-		\end{column}
-		% Column 3
-		\begin{column}{0.49\textwidth}
-			\includegraphics[width=\textwidth]{logo_borders.png}
-		\end{column}
-
-	\end{columns}
-\end{frame}
-
-\begin{frame}[plain,squeeze]{Defined Colors}{This is a subtitle}
-	\begin{description}[Snow Storm]
-		\item[Polar Night]
-			\textcolor{NordDarkBlack}{NordDarkBlack} \quad \textcolor{NordBlack}{NordBlack}\\
-			\textcolor{NordMediumBlack}{NordMediumBlack} \quad \textcolor{NordBrightBlack}{NordBrightBlack}
-		\item[Snow Storm]
-			\textcolor{NordWhite}{NordWhite} \quad \textcolor{NordBrighterWhite}{NordBrightestWhite}\\
-			\textcolor{NordBrightestWhite}{NordBrightestWhite}
-		\item[Frost]
-			\textcolor{NordCyan}{NordCyan} \quad \textcolor{NordBrightCyan}{NordBrightCyan}\\
-			\textcolor{NordBlue}{NordBlue} \quad \textcolor{NordBrightBlue}{NordBrightBlue}
-		\item[Aurora]
-			\textcolor{NordRed}{NordRed} \quad \textcolor{NordOrange}{NordOrange} \\
-			\textcolor{NordYellow}{NordYellow} \quad \textcolor{NordGreen}{NordGreen} \\
-			\textcolor{NordMagenta}{NordMagenta}
-	\end{description}
-\end{frame}
-
-\begin{frame}
-\begin{tikzpicture}
-\draw[NordRed, thick] (-1,2) -- (2,-4);
-\draw[NordBrightBlue, thick] (-1,-1) -- (2,2);
-\filldraw[black] (0,0) circle (2pt) node[anchor=west]{
-		\includegraphics[width=0.5cm]{logo_borders.png}
-};
-\end{tikzpicture}
-	% \begin{tikzpicture}[overlay,remember picture]
-	% \node[right=0.2cm] at (current page.150) {%
-	% 	\includegraphics[width=0.5cm]{logo_borders.png}
-	% };
-	% \end{tikzpicture}
-\end{frame}
-
-\begin{frame}[fragile]
-\tiny\ttfamily
-\begin{lstlisting}
-#!/bin/bash
-echo the $# parameter did not destroy pygments syntax highlighting
-\end{lstlisting}
-\end{frame}
-
-\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
-\begin{frame}
-	\lstinputlisting[language=Bash]{bash_script.sh}
-\end{frame}
 
 
-\begin{frame}
+% \begin{frame}{Vertical line between columns}
 
-    This is your first presentation!
-	\newline
-    \rmfamily This is your first presentation!
-	\newline
-	\textup{Upright} \textit{Italic} \textsl{Slanted}
-	\newline
+% 	\begin{columns}[T]%Tcb
+% 		% Column 1
+% 		\begin{column}{0.49\textwidth}
+
+% 			\begin{itemize}
+% 				\item Input layer: 2 neurons.
+% 				\item Hidden layer: 5 neurons.
+% 				\item Output layer: 2 neurons.
+% 			\end{itemize}
+
+% 		\end{column}
+% 		% Column 2 (vertical line)
+% 		\begin{column}{.02\textwidth}
+% 			\rule{.1mm}{0.7\textheight}
+% 		\end{column}
+% 		% Column 3
+% 		\begin{column}{0.49\textwidth}
+% 			\includegraphics[width=\textwidth]{logo_borders.png}
+% 		\end{column}
+
+% 	\end{columns}
+% \end{frame}
+
+% \begin{frame}[plain,squeeze]{Defined Colors}{This is a subtitle}
+% 	\begin{description}[Snow Storm]
+% 		\item[Polar Night]
+% 			\textcolor{NordDarkBlack}{NordDarkBlack} \quad \textcolor{NordBlack}{NordBlack}\\
+% 			\textcolor{NordMediumBlack}{NordMediumBlack} \quad \textcolor{NordBrightBlack}{NordBrightBlack}
+% 		\item[Snow Storm]
+% 			\textcolor{NordWhite}{NordWhite} \quad \textcolor{NordBrighterWhite}{NordBrightestWhite}\\
+% 			\textcolor{NordBrightestWhite}{NordBrightestWhite}
+% 		\item[Frost]
+% 			\textcolor{NordCyan}{NordCyan} \quad \textcolor{NordBrightCyan}{NordBrightCyan}\\
+% 			\textcolor{NordBlue}{NordBlue} \quad \textcolor{NordBrightBlue}{NordBrightBlue}
+% 		\item[Aurora]
+% 			\textcolor{NordRed}{NordRed} \quad \textcolor{NordOrange}{NordOrange} \\
+% 			\textcolor{NordYellow}{NordYellow} \quad \textcolor{NordGreen}{NordGreen} \\
+% 			\textcolor{NordMagenta}{NordMagenta}
+% 	\end{description}
+% \end{frame}
+
+% \begin{frame}
+% \begin{tikzpicture}
+% \draw[NordRed, thick] (-1,2) -- (2,-4);
+% \draw[NordBrightBlue, thick] (-1,-1) -- (2,2);
+% \filldraw[black] (0,0) circle (2pt) node[anchor=west]{
+% 		\includegraphics[width=0.5cm]{logo_borders.png}
+% };
+% \end{tikzpicture}
+% 	% \begin{tikzpicture}[overlay,remember picture]
+% 	% \node[right=0.2cm] at (current page.150) {%
+% 	% 	\includegraphics[width=0.5cm]{logo_borders.png}
+% 	% };
+% 	% \end{tikzpicture}
+% \end{frame}
+
+% \begin{frame}[fragile]
+% \tiny\ttfamily
+% \begin{lstlisting}
+% #!/bin/bash
+% echo the $# parameter did not destroy pygments syntax highlighting
+% \end{lstlisting}
+% \end{frame}
+
+% \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+% \begin{frame}
+% 	\lstinputlisting[language=Bash]{bash_script.sh}
+% \end{frame}
 
 
-    \sffamily This is your first presentation!
-	\newline
-	\textsf{Upright  \textit{Italic} \textsl{Slanted}}
-	\newline
+% \begin{frame}
 
-    \ttfamily This is your first presentation!
-	\newline
-	\texttt{Upright  \textit{Italic} \textsl{Slanted}}
-	\newline
+%     This is your first presentation!
+% 	\newline
+%     \rmfamily This is your first presentation!
+% 	\newline
+% 	\textup{Upright} \textit{Italic} \textsl{Slanted}
+% 	\newline
 
-	\textsc{Small Capitals}
 
-\end{frame}
+%     \sffamily This is your first presentation!
+% 	\newline
+% 	\textsf{Upright  \textit{Italic} \textsl{Slanted}}
+% 	\newline
 
-% \begin{overlayarea}<overlay spec>{area width}{area height}
-\begin{overlayarea}{1080px}{1080px}
-  content
-\end{overlayarea}
+%     \ttfamily This is your first presentation!
+% 	\newline
+% 	\texttt{Upright  \textit{Italic} \textsl{Slanted}}
+% 	\newline
+
+% 	\textsc{Small Capitals}
+
+% \end{frame}
+
+% % \begin{overlayarea}<overlay spec>{area width}{area height}
+% \begin{overlayarea}{1080px}{1080px}
+%   content
+% \end{overlayarea}
 
 \end{document}
