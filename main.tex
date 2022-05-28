@@ -10,11 +10,16 @@
 \usepackage{bm}
 \usepackage{textcomp}
 
+
 \usepackage{tikz}
 \usetikzlibrary{snakes}
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shadows}
 \RequirePackage{tikz-penciline}
 
+
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{showexpl}
 
 
 \definecolor{NordBG}{HTML}{242933}
@@ -50,7 +55,9 @@
 
 \setbeamertemplate{headline}
 {%
-	\vskip2pt\ \hskip2pt\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\ttfamily\insertpagenumber/\insertdocumentendpage\ \ \vskip2pt
+	% \vskip2pt\ \hskip2pt\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\ttfamily\insertpagenumber/\insertdocumentendpage\ \ \vskip2pt
+	% \vskip2pt\ \hskip2pt\footnotesize\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\ \ \vskip2pt
+	\vskip6pt\null\hfill\Large\textcolor{NordGreen}{\insertsection}\hfill\null\newline\vskip4pt\hfill\normalsize\textcolor{NordBlue}{\insertsubsection}\hfill\null
 }
 \setbeamertemplate{footline}
 {%
@@ -65,79 +72,178 @@
 % {\usebeamercolor{palette primary}}
 % \setbeamertemplate{sidebar canvas}[vertical shading][top=primary.bg,middle=white,bottom=primary.bg]
 
+\mdfdefinestyle{code}{%
+leftmargin=10pt,
+rightmargin=10pt,
+rightline=true,innerleftmargin=20,innerrightmargin=10,
+frametitlerule=false,
+backgroundcolor=NordBlack,
+frametitlerulewidth=0pt,
+align=center,
+linewidth=0pt,
+shadow=false,
+shadowsize=3pt,
+shadowcolor=NordWhite,
+roundcorner=20pt}
 
+\setbeamersize{text margin left=0mm,text margin right=0mm}
 \begin{document}
-\fontsize{4pt}{1}\selectfont
+% \fontsize{4pt}{1}\selectfont
 
-% \setbeamercolor{background canvas}{bg=NordBG}
+\setbeamercolor{background canvas}{bg=NordBG}
 
 \usemintedstyle{nord}
 
-\setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,highlightcolor=NordBrightBlack,highlightlines={2, 5-9},fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
 
-\section{Exemplo de Seção 1}
-\subsection{Exemplo de SubSeção 1}
-\begin{frame}[fragile=singleslide,noframenumbering,squeeze]
-	\inputminted{python}{example.py}
-	\vspace*{-3px}
-	\begin{tikzpicture}[%
-			overlay,%
-			remember picture,%
-			set style={{help lines}+=[very thin,NordBG]},%
-			pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}},%
-			penciline={jag ratio=0.1}
-	]
-		\draw[help lines] (0,0) grid (8,9);
-		\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
-		\draw[very thick, NordWhite] (0,0) to [out=90,in=195] (2,1.5);
-		\draw [<->,thick, NordCyan] (0,0) to [out=90,in=180] (1,1)
-		to [out=0,in=180] (2.5,0) to [out=0,in=-135] (4,1) ;
-		\draw[NordRed, thick] (0,9) -- (8,0);
-		\draw[NordBrightBlue, thick] (0,0) -- (8,9);
-		\filldraw[NordBG] (4,4.5) circle (1pt);
-		\node [above] at (4,4.5) {above};
-		\node [below] at (4,4.5) {below};
-		\node [left] at (4,4.5) {left};
-		\node [right] at (4,4.5) {right};
+% \setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,highlightcolor=NordBrightBlack,highlightlines={2, 5-9},fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
+\setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=false,fontsize=\large,autogobble,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
 
-		\filldraw[NordBG] (4,7.5) circle (1pt);
-		\node [below right] at (4,7.5) {below right};
-		\node [below left] at (4,7.5) {below left};
-		\node [above right] at (4,7.5) {above right};
-		\node [above left] at (4,7.5) {above left};
+% \section{pandas DataFrame \& numpy r\_ array}
+% \subsection{Mostrar Primeiros e Últimos Elementos}
+% \begin{frame}[fragile=singleslide,noframenumbering,squeeze]
 
-		\draw [thick]
-		(2,9) -- (8,9);
-		\draw (2,8.8) -- (2, 9.2);
-		\draw (4,8.8) -- (4, 9.2);
-		\draw (6,8.8) -- (6, 9.2);
-		\draw (8,8.8) -- (8, 9.2);
-		\begin{scope}[NordBlack]
-			\node[align=left, below,fill=NordWhite,rounded corners] at (3,8.9)%
-			{This happens\\in period 1\\and is aligned\\ left};
-			\node[align=center, below,fill=NordWhite,rounded corners] at (5,8.9)%
-			{This happens\\in period 2\\and is centered};
-			\node[align=right, below,fill=NordWhite,rounded corners] at (7,8.9)%
-			{This happens\\in period 3\\and is right aligned};
-		\end{scope}
+% \begin{mdframed}[style=exampledefault,frametitle={Inhomogeneous linear}]
+% Some Text
+% \end{mdframed}
 
-		\draw[x=10ex,y=10ex] (6.5,6.5) sin (8,7.5);
+% \end{frame}
 
-		\draw[snake=brace,thick] (0,3.73) -- (0.55,3.73);
-		\node[align=left,above right,NordBlack,fill=NordWhite,rounded corners] at (0.32,3.93)%
-		{Essa palavra chave indica a definição de uma classe};
+\section{Mostrar Primeiros e Últimos Elementos}
+\subsection{pandas DataFrame \& numpy r\_ array}
+\begin{frame}[noframenumbering]
+	\vskip30pt
+	\null\vfill
+	\begin{center}
+		\begin{mdframed}[style=code]
+			\inputminted{python}{df_head_tail.py}
+		\end{mdframed}
+	\end{center}
+	\vfill\null
 
-		\draw[->,pencildraw,thick,very nearly opaque] (0.61,2.53) to [out=80,in=180] (0.87,2.65);
-		\node[align=left,right,NordBlack,fill=NordWhite,rounded corners,inner sep=0.2ex] at (0.87,2.65)%
-		{\includegraphics[height=0.027\textheight]{def_func.png}};
-		% {Essa palavra chave indica a definição de uma função};
+	% \vspace*{-3px}
+	% \begin{tikzpicture}[%
+	% 		overlay,%
+	% 		remember picture,%
+	% 		set style={{help lines}+=[very thin,NordBG]},%
+	% 		pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}},%
+	% 		penciline={jag ratio=0.1}
+	% ]
+	% 	\draw[help lines] (0,0) grid (8,9);
+	% 	\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
+	% 	\draw[very thick, NordWhite] (0,0) to [out=90,in=195] (2,1.5);
+	% 	\draw [<->,thick, NordCyan] (0,0) to [out=90,in=180] (1,1)
+	% 	to [out=0,in=180] (2.5,0) to [out=0,in=-135] (4,1) ;
+	% 	\draw[NordRed, thick] (0,9) -- (8,0);
+	% 	\draw[NordBrightBlue, thick] (0,0) -- (8,9);
+	% 	\filldraw[NordBG] (4,4.5) circle (1pt);
+	% 	\node [above] at (4,4.5) {above};
+	% 	\node [below] at (4,4.5) {below};
+	% 	\node [left] at (4,4.5) {left};
+	% 	\node [right] at (4,4.5) {right};
 
-		% \filldraw[NordWhite] (0.61,2.53) circle (1pt);
-		% \filldraw[NordWhite] (0.91,2.6) circle (1pt);
-	\end{tikzpicture}
+	% 	\filldraw[NordBG] (4,7.5) circle (1pt);
+	% 	\node [below right] at (4,7.5) {below right};
+	% 	\node [below left] at (4,7.5) {below left};
+	% 	\node [above right] at (4,7.5) {above right};
+	% 	\node [above left] at (4,7.5) {above left};
+
+	% 	\draw [thick]
+	% 	(2,9) -- (8,9);
+	% 	\draw (2,8.8) -- (2, 9.2);
+	% 	\draw (4,8.8) -- (4, 9.2);
+	% 	\draw (6,8.8) -- (6, 9.2);
+	% 	\draw (8,8.8) -- (8, 9.2);
+	% 	\begin{scope}[NordBlack]
+	% 		\node[align=left, below,fill=NordWhite,rounded corners] at (3,8.9)%
+	% 		{This happens\\in period 1\\and is aligned\\ left};
+	% 		\node[align=center, below,fill=NordWhite,rounded corners] at (5,8.9)%
+	% 		{This happens\\in period 2\\and is centered};
+	% 		\node[align=right, below,fill=NordWhite,rounded corners] at (7,8.9)%
+	% 		{This happens\\in period 3\\and is right aligned};
+	% 	\end{scope}
+
+	% 	\draw[x=10ex,y=10ex] (6.5,6.5) sin (8,7.5);
+
+	% 	\draw[snake=brace,thick] (0,3.73) -- (0.55,3.73);
+	% 	\node[align=left,above right,NordBlack,fill=NordWhite,rounded corners] at (0.32,3.93)%
+	% 	{Essa palavra chave indica a definição de uma classe};
+
+	% 	\draw[->,pencildraw,thick,very nearly opaque] (0.61,2.53) to [out=80,in=180] (0.87,2.65);
+	% 	\node[align=left,right,NordBlack,fill=NordWhite,rounded corners,inner sep=0.2ex] at (0.87,2.65)%
+	% 	{\includegraphics[height=0.027\textheight]{def_func.png}};
+	% 	% {Essa palavra chave indica a definição de uma função};
+
+	% 	% \filldraw[NordWhite] (0.61,2.53) circle (1pt);
+	% 	% \filldraw[NordWhite] (0.91,2.6) circle (1pt);
+	% \end{tikzpicture}
 
 
 \end{frame}
+
+
+% \section{Exemplo de Seção 1}
+% \subsection{Exemplo de SubSeção 1}
+% \begin{frame}[fragile=singleslide,noframenumbering,squeeze]
+% 	\inputminted{python}{example.py}
+% 	\vspace*{-3px}
+% 	\begin{tikzpicture}[%
+% 			overlay,%
+% 			remember picture,%
+% 			set style={{help lines}+=[very thin,NordBG]},%
+% 			pencildraw/.style={NordWhite,decorate,decoration={random steps,segment length=1pt,amplitude=0.15pt}},%
+% 			penciline={jag ratio=0.1}
+% 	]
+% 		\draw[help lines] (0,0) grid (8,9);
+% 		\draw [<->, rounded corners, thick, NordMagenta] (0,2) -- (0,0) -- (3,0);
+% 		\draw[very thick, NordWhite] (0,0) to [out=90,in=195] (2,1.5);
+% 		\draw [<->,thick, NordCyan] (0,0) to [out=90,in=180] (1,1)
+% 		to [out=0,in=180] (2.5,0) to [out=0,in=-135] (4,1) ;
+% 		\draw[NordRed, thick] (0,9) -- (8,0);
+% 		\draw[NordBrightBlue, thick] (0,0) -- (8,9);
+% 		\filldraw[NordBG] (4,4.5) circle (1pt);
+% 		\node [above] at (4,4.5) {above};
+% 		\node [below] at (4,4.5) {below};
+% 		\node [left] at (4,4.5) {left};
+% 		\node [right] at (4,4.5) {right};
+
+% 		\filldraw[NordBG] (4,7.5) circle (1pt);
+% 		\node [below right] at (4,7.5) {below right};
+% 		\node [below left] at (4,7.5) {below left};
+% 		\node [above right] at (4,7.5) {above right};
+% 		\node [above left] at (4,7.5) {above left};
+
+% 		\draw [thick]
+% 		(2,9) -- (8,9);
+% 		\draw (2,8.8) -- (2, 9.2);
+% 		\draw (4,8.8) -- (4, 9.2);
+% 		\draw (6,8.8) -- (6, 9.2);
+% 		\draw (8,8.8) -- (8, 9.2);
+% 		\begin{scope}[NordBlack]
+% 			\node[align=left, below,fill=NordWhite,rounded corners] at (3,8.9)%
+% 			{This happens\\in period 1\\and is aligned\\ left};
+% 			\node[align=center, below,fill=NordWhite,rounded corners] at (5,8.9)%
+% 			{This happens\\in period 2\\and is centered};
+% 			\node[align=right, below,fill=NordWhite,rounded corners] at (7,8.9)%
+% 			{This happens\\in period 3\\and is right aligned};
+% 		\end{scope}
+
+% 		\draw[x=10ex,y=10ex] (6.5,6.5) sin (8,7.5);
+
+% 		\draw[snake=brace,thick] (0,3.73) -- (0.55,3.73);
+% 		\node[align=left,above right,NordBlack,fill=NordWhite,rounded corners] at (0.32,3.93)%
+% 		{Essa palavra chave indica a definição de uma classe};
+
+% 		\draw[->,pencildraw,thick,very nearly opaque] (0.61,2.53) to [out=80,in=180] (0.87,2.65);
+% 		\node[align=left,right,NordBlack,fill=NordWhite,rounded corners,inner sep=0.2ex] at (0.87,2.65)%
+% 		{\includegraphics[height=0.027\textheight]{def_func.png}};
+% 		% {Essa palavra chave indica a definição de uma função};
+
+% 		% \filldraw[NordWhite] (0.61,2.53) circle (1pt);
+% 		% \filldraw[NordWhite] (0.91,2.6) circle (1pt);
+% 	\end{tikzpicture}
+
+
+% \end{frame}
 
 
 % \begin{frame}{Font size in Beamer (default)}
