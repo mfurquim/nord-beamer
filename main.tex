@@ -77,10 +77,11 @@ leftmargin=10pt,
 rightmargin=10pt,
 rightline=true,innerleftmargin=20,innerrightmargin=10,
 frametitlerule=false,
-backgroundcolor=NordBlack,
+backgroundcolor=NordDarkBlack,
 frametitlerulewidth=0pt,
 align=center,
-linewidth=0pt,
+linecolor=NordBrightBlack,
+linewidth=1pt,
 shadow=false,
 shadowsize=3pt,
 shadowcolor=NordWhite,
@@ -90,7 +91,15 @@ roundcorner=20pt}
 \begin{document}
 % \fontsize{4pt}{1}\selectfont
 
-\setbeamercolor{background canvas}{bg=NordBG}
+% \setbeamercolor{background canvas}{bg=NordBG}
+\setbeamertemplate{background canvas}{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\shade[outer color=NordBG, inner color=NordBrightBlack]
+		([shift={(0cm,0cm)}]current page.north west)
+		rectangle
+		([shift={(0cm,0cm)}]current page.south east);
+	\end{tikzpicture}%
+}
 
 \usemintedstyle{nord}
 
