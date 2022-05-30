@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-TARGET    = df_head_tail.png
+TARGET    = random_number_1_10.png
 
 MAIN_FILE = main.tex
 DVI_FILE  = $(addsuffix .dvi, $(basename $(MAIN_FILE)))

@@ -57,56 +57,85 @@
 {%
 	% \vskip2pt\ \hskip2pt\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\ttfamily\insertpagenumber/\insertdocumentendpage\ \ \vskip2pt
 	% \vskip2pt\ \hskip2pt\footnotesize\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\ \ \vskip2pt
-	\vskip6pt\null\hfill\Large\textcolor{NordGreen}{\insertsection}\hfill\null\newline\vskip4pt\hfill\normalsize\textcolor{NordBlue}{\insertsubsection}\hfill\null
+	\vskip6pt\null\hfill\Large\textcolor{NordGreen}{\insertsection}\hfill\null\newline\vskip6pt\hfill\normalsize\textcolor{NordBlue}{\insertsubsection}\hfill\null
 }
-\setbeamertemplate{footline}
-{%
-\begin{figure}
-	\hfill
-	\def\svgwidth{16px}
-	\input{logo.pdf_tex}
-	\hskip2pt
-\end{figure}
-}
+\setbeamertemplate{footline}{}
 % \setbeamertemplate{mini frames}[box]
 % {\usebeamercolor{palette primary}}
 % \setbeamertemplate{sidebar canvas}[vertical shading][top=primary.bg,middle=white,bottom=primary.bg]
 
 \mdfdefinestyle{code}{%
-leftmargin=10pt,
-rightmargin=10pt,
-rightline=true,innerleftmargin=20,innerrightmargin=10,
-frametitlerule=false,
-backgroundcolor=NordDarkBlack,
-frametitlerulewidth=0pt,
-align=center,
-linecolor=NordBrightBlack,
-linewidth=1pt,
-shadow=false,
-shadowsize=3pt,
-shadowcolor=NordWhite,
-roundcorner=20pt}
+	innertopmargin=0pt,
+	innerbottommargin=12pt,
+	skipabove=\baselineskip,
+	skipbelow=\baselineskip,
+	leftmargin=6pt,
+	rightmargin=6pt,
+	innerleftmargin=3,
+	innerrightmargin=2,
+	rightline=true,
+	frametitlerule=true,
+	backgroundcolor=NordDarkBlack,
+	frametitlerulewidth=0pt,
+	align=center,
+	linecolor=NordBrightBlack,
+	linewidth=1pt,
+	shadow=false,
+	shadowsize=3pt,
+	shadowcolor=NordWhite,
+	roundcorner=20pt
+}
 
 \setbeamersize{text margin left=0mm,text margin right=0mm}
 \begin{document}
 % \fontsize{4pt}{1}\selectfont
 
 % \setbeamercolor{background canvas}{bg=NordBG}
+% \setbeamertemplate{background canvas}{%
+% 	\begin{tikzpicture}[remember picture,overlay]
+% 		\shade[left color=NordBlack, right color=NordBG]
+% 		% \shade[outer color=NordBG, inner color=NordMediumBlack]
+% 		([shift={(0cm,0cm)}]current page.north west)
+% 		rectangle
+% 		([shift={(0cm,0cm)}]current page.south east);
+% 	\end{tikzpicture}%
+% }
+
 \setbeamertemplate{background canvas}{%
-	\begin{tikzpicture}[remember picture,overlay]
-		\shade[outer color=NordBG, inner color=NordBrightBlack]
-		([shift={(0cm,0cm)}]current page.north west)
-		rectangle
-		([shift={(0cm,0cm)}]current page.south east);
-	\end{tikzpicture}%
+  \includegraphics[width = \paperwidth, height = \paperheight]
+  {bg_gradient.png}
 }
+
+
 
 \usemintedstyle{nord}
 
 
 % \setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=true,highlightcolor=NordBrightBlack,highlightlines={2, 5-9},fontsize=\tiny,autogobble,breaklines,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
-\setminted[python]{texcomments=true,samepage=true,resetmargins=true,python3=true,tabsize=4,obeytabs=false,linenos=false,fontsize=\large,autogobble,breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}}
+\setminted[python]{
+	texcomments=true,
+	samepage=true,
+	resetmargins=true,
+	python3=true,
+	tabsize=4,
+	obeytabs=false,
+	linenos=false,
+	fontsize=\footnotesize,
+	autogobble,
+	breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}
+}
 
+\setminted[bash]{
+	texcomments=true,
+	samepage=true,
+	resetmargins=true,
+	tabsize=4,
+	obeytabs=false,
+	linenos=false,
+	fontsize=\normalsize,
+	autogobble,
+	breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}
+}
 % \section{pandas DataFrame \& numpy r\_ array}
 % \subsection{Mostrar Primeiros e Últimos Elementos}
 % \begin{frame}[fragile=singleslide,noframenumbering,squeeze]
@@ -117,15 +146,16 @@ roundcorner=20pt}
 
 % \end{frame}
 
-\section{Mostrar Primeiros e Últimos Elementos}
-\subsection{pandas DataFrame \& numpy r\_ array}
+\section{Gerar Número Aleatório Entre 1 e 10}
+\subsection{\$RANDOM}
 \begin{frame}[noframenumbering]
 	\vskip30pt
 	\null\vfill
 	\begin{center}
 		\begin{mdframed}[style=code]
-			\inputminted{python}{df_head_tail.py}
+			\inputminted{bash}{random_number_1_10.sh}
 		\end{mdframed}
+		\vskip-32pt\hfill\resizebox{16px}{!}{\includegraphics{smallest_logo_transparent_bg.png}}\hskip4pt\null
 	\end{center}
 	\vfill\null
 
