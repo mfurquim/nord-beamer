@@ -3,13 +3,35 @@
 % \usepackage[paperwidth=11.25n, paperheight=11.25in]{geometry}
 % \geometry{total={11.25in,11.25in}}
 
+% \usepackage[math]{iwona}
+% \usepackage{cmbright}
+% \usepackage{mathptmx}
+% \usepackage[charter]{mathdesign}
+% \usepackage{arev}
 \RequirePackage{xcolor}
+
+
+\usepackage{fontspec}
+\setmonofont{Fira Code}[
+  Contextuals=Alternate  % Activate the calt feature
+]
 \usepackage{listings}
+\usepackage{lstfiracode} % https://ctan.org/pkg/lstfiracode
+
+
 \usepackage{minted}
+
 \usepackage{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+
 \usepackage{bm}
 \usepackage{textcomp}
 
+\usepackage{dashrule}
+% \usepackage{arydshln}
+% \setlength\dashlinedash{0.2pt}
+% \setlength\dashlinegap{1.5pt}
+% \setlength\arrayrulewidth{0.3pt}
 
 \usepackage{tikz}
 \usetikzlibrary{snakes}
@@ -34,7 +56,10 @@
 
 \usetheme{Nord}
 
-\renewcommand{\familydefault}{FiraCode Mono}
+% \renewcommand{\familydefault}{FiraCode Mono}
+% \renewcommand{\familydefault}{\sfdefault}
+% \renewcommand{\familydefault}{AuriocusKalligraphicus}
+
 
 \title{\LaTeX\ Beamer introduction}
 \subtitle{Quick-start guide}
@@ -57,9 +82,19 @@
 {%
 	% \vskip2pt\ \hskip2pt\tiny\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\hfill\ttfamily\insertpagenumber/\insertdocumentendpage\ \ \vskip2pt
 	% \vskip2pt\ \hskip2pt\footnotesize\textcolor{NordGreen}{\insertsection}\hfill\textcolor{NordBlue}{\insertsubsection}\ \ \vskip2pt
-	\vskip6pt\null\hfill\Large\textcolor{NordGreen}{\insertsection}\hfill\null\newline\vskip6pt\hfill\normalsize\textcolor{NordBlue}{\insertsubsection}\hfill\null
+    \vskip6pt\null\hfill\Large\textcolor{NordGreen}{\bfseries\insertsection}\hfill\null\newline%
+    \vskip3pt\hfill\normalsize\textcolor{NordBlue}{\bfseries\insertsubsection}\hfill\null\newline%
+    % \vskip3pt\null\hfill\noindent\textcolor{NordBrightBlack}{\rule[0.618ex]{0.618\linewidth}{0.618pt}}\hfill\null
 }
-\setbeamertemplate{footline}{}
+
+
+
+\setbeamertemplate{footline}{
+    \hfill\resizebox{16pt}{!}{\includegraphics{smallest_logo_transparent_bg.png}}\hskip3pt\null
+}
+
+
+
 % \setbeamertemplate{mini frames}[box]
 % {\usebeamercolor{palette primary}}
 % \setbeamertemplate{sidebar canvas}[vertical shading][top=primary.bg,middle=white,bottom=primary.bg]
@@ -86,27 +121,13 @@
 	roundcorner=20pt
 }
 
-\setbeamersize{text margin left=0mm,text margin right=0mm}
+\setbeamersize{text margin left=2mm,text margin right=0mm}
 \begin{document}
-% \fontsize{4pt}{1}\selectfont
-
-% \setbeamercolor{background canvas}{bg=NordBG}
-% \setbeamertemplate{background canvas}{%
-% 	\begin{tikzpicture}[remember picture,overlay]
-% 		\shade[left color=NordBlack, right color=NordBG]
-% 		% \shade[outer color=NordBG, inner color=NordMediumBlack]
-% 		([shift={(0cm,0cm)}]current page.north west)
-% 		rectangle
-% 		([shift={(0cm,0cm)}]current page.south east);
-% 	\end{tikzpicture}%
-% }
 
 \setbeamertemplate{background canvas}{%
   \includegraphics[width = \paperwidth, height = \paperheight]
-  {bg_gradient.png}
+  {bg_gradient.png}%
 }
-
-
 
 \usemintedstyle{nord}
 
@@ -120,7 +141,7 @@
 	tabsize=4,
 	obeytabs=false,
 	linenos=false,
-	fontsize=\footnotesize,
+	fontsize=\scriptsize,
 	autogobble,
 	breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}
 }
@@ -136,28 +157,38 @@
 	autogobble,
 	breaksymbolleft=\textcolor{NordBrightBlack}{\tiny$\hookrightarrow$}
 }
-% \section{pandas DataFrame \& numpy r\_ array}
-% \subsection{Mostrar Primeiros e Últimos Elementos}
-% \begin{frame}[fragile=singleslide,noframenumbering,squeeze]
 
-% \begin{mdframed}[style=exampledefault,frametitle={Inhomogeneous linear}]
-% Some Text
-% \end{mdframed}
-
-% \end{frame}
-
-\section{Gerar Número Aleatório Entre 1 e 10}
-\subsection{\$RANDOM}
-\begin{frame}[noframenumbering]
-	\vskip30pt
+\section{Testing size}
+\subsection[]{test file}
+\begin{frame}[fragile=singleslide,noframenumbering,squeeze]
+% \begin{frame}[noframenumbering]
+    \frametitle{}
 	\null\vfill
 	\begin{center}
-		\begin{mdframed}[style=code]
-			\inputminted{bash}{random_number_1_10.sh}
-		\end{mdframed}
-		\vskip-32pt\hfill\resizebox{16px}{!}{\includegraphics{smallest_logo_transparent_bg.png}}\hskip4pt\null
+        \inputminted{python}{test.py}
 	\end{center}
 	\vfill\null
+\end{frame}
+
+% \section{Gerar Número Aleatório Entre 1 e 10}
+% \subsection{\ttfamily\$RANDOM}
+% \begin{frame}[noframenumbering]
+% 	\null\vfill
+% 	\begin{center}
+%         \inputminted{bash}{random_number_1_10.sh}
+% 	\end{center}
+% 	\vfill\null
+% \end{frame}
+
+% \section{Mostrar primeiros e últimos elementos}
+% \subsection{\ttfamily df.iloc}
+% \begin{frame}[noframenumbering]
+% 	\null\vfill
+% 	\begin{center}
+%         \inputminted{python}{df_head_tail.py}
+% 	\end{center}
+% 	\vfill\null
+% \end{frame}
 
 	% \vspace*{-3px}
 	% \begin{tikzpicture}[%
@@ -217,7 +248,7 @@
 	% \end{tikzpicture}
 
 
-\end{frame}
+    % \vskip12pt\hfill\resizebox{16px}{!}{\includegraphics{smallest_logo_transparent_bg.png}}\hskip4pt\null
 
 
 % \section{Exemplo de Seção 1}

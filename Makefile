@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-TARGET    = random_number_1_10.png
+TARGET    = main.png
 
 MAIN_FILE = main.tex
 DVI_FILE  = $(addsuffix .dvi, $(basename $(MAIN_FILE)))
@@ -9,8 +9,8 @@ PS_FILE   = $(addsuffix .ps,  $(basename $(MAIN_FILE)))
 PDF_FILE  = $(addsuffix .pdf, $(basename $(MAIN_FILE)))
 PNG_FILE  = $(addsuffix .png, $(basename $(MAIN_FILE)))
 
-CC_LATEX  = pdflatex
-#CC_LATEX  = xelatex
+# CC_LATEX  = pdflatex
+CC_LATEX  = xelatex
 
 all:
 	$(CC_LATEX) -shell-escape $(MAIN_FILE)
@@ -21,4 +21,3 @@ all:
 
 clean:
 	@rm -vf *.brf *.lol *.idx *.lof *.lot *.toc *.bbl *.blg *.log *.aux *.dvi *.nav *.snm *.out *.vrb
-
